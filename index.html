@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+  </head>
+  <body
+    style="
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div
+      style="
+        border: 10px solid #ddd;
+        width: fit-content;
+        padding: 50px;
+        text-align: center;
+      "
+    >
+      <h2>A simple Counter</h2>
+      <h1 id="count">0</h1>
+      <button style="font-size: 25px; padding: 5px 35px" id="increase-btn">
+        +
+      </button>
+      <br />
+      <br />
+      <button style="font-size: 25px; padding: 5px 35px" onclick="reset()">
+        Reset
+      </button>
+    </div>
+
+    <script>
+      const reset = () => {
+        localStorage.setItem("count", "0");
+        document.getElementById("count").innerText = 0;
+      };
+      document.getElementById("count").innerText =
+        localStorage.getItem("count");
+      let count;
+      document.getElementById("increase-btn").addEventListener("click", () => {
+        count = parseInt(document.getElementById("count").innerText);
+        count++;
+        localStorage.setItem("count", count);
+        document.getElementById("count").innerText = count;
+      });
+    </script>
+  </body>
+</html>
